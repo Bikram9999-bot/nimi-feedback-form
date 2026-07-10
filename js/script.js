@@ -259,19 +259,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // 4. Concatenate and format metadata and append Comments field (entry.1234865037)
-    const ncvt = document.getElementById('q-ncvt').value.trim();
-    const email = document.getElementById('q-email').value.trim();
-    const year = document.getElementById('q-year').value;
-    const examDate = document.getElementById('q-exam-date').value;
-    const scheme = document.getElementById('q-scheme').value.trim();
+    // 4. Append Comments field (entry.1234865037)
     const rawComments = document.getElementById('q12-comments').value.trim();
-
-    let finalComments = `NCVT Code: ${ncvt} | Email: ${email} | Year: ${year} | Exam Date: ${examDate} | Scheme: ${scheme}`;
-    if (rawComments) {
-      finalComments += `\n\nComments:\n${rawComments}`;
-    }
-    formData.append('entry.1234865037', finalComments);
+    formData.append('entry.1234865037', rawComments);
 
     const googleFormActionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfSoTbnzE_gTBsDQNqJ9Px8Qrpt9hWG0hgvvQAD-ru3_S2gJg/formResponse';
 
@@ -347,11 +337,6 @@ document.addEventListener('DOMContentLoaded', () => {
           institute,
           designation,
           trade,
-          ncvt,
-          email,
-          year,
-          examDate,
-          scheme,
           familiarity,
           offerings: checkedOfferings,
           valueAddition,

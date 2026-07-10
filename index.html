@@ -30,8 +30,7 @@
       <section class="form-section">
         <h3 class="section-title">1. Instructor Details</h3>
         
-        <h4 style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Instructor Profile (Q1 - Q6)</h4>
-        <div class="form-grid" style="margin-bottom: 30px;">
+        <div class="form-grid">
           
           <!-- Q1. Name of the Instructor (Col 6) -->
           <div class="form-group col-6">
@@ -110,58 +109,7 @@
 
         </div>
 
-        <h4 style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px; font-weight: 600; border-top: 1px solid var(--border-color); padding-top: 24px; text-transform: uppercase; letter-spacing: 0.5px;">Session & Registration Details</h4>
-        <div class="form-grid">
 
-          <!-- NCVT / MIS Code (Col 4) -->
-          <div class="form-group col-4">
-            <label for="q-ncvt" class="form-label">
-              NCVT / MIS Code <span class="required-star">*</span>
-            </label>
-            <input type="text" id="q-ncvt" name="instructor_ncvt" class="form-control" placeholder="Enter NCVT / MIS Code" required maxlength="12">
-            <span class="error-msg">Please enter NCVT / MIS Code.</span>
-          </div>
-
-          <!-- Email ID (Col 4) -->
-          <div class="form-group col-4">
-            <label for="q-email" class="form-label">
-              Email ID <span class="required-star">*</span>
-            </label>
-            <input type="email" id="q-email" name="instructor_email" class="form-control" placeholder="Enter Email ID" required>
-            <span class="error-msg">Please enter a valid Email ID.</span>
-          </div>
-
-          <!-- Year (Col 4) -->
-          <div class="form-group col-4">
-            <label for="q-year" class="form-label">
-              Year <span class="required-star">*</span>
-            </label>
-            <select id="q-year" name="instructor_year" class="form-control" required>
-              <option value="">--Select Year--</option>
-              <option value="1st Year">1st Year</option>
-              <option value="2nd Year">2nd Year</option>
-            </select>
-            <span class="error-msg">Please select a year.</span>
-          </div>
-
-          <!-- Date of Examination (Col 4) -->
-          <div class="form-group col-4">
-            <label for="q-exam-date" class="form-label">
-              Date of Examination <span class="required-star">*</span>
-            </label>
-            <input type="date" id="q-exam-date" name="instructor_exam_date" class="form-control" required>
-            <span class="error-msg">Please select date of examination.</span>
-          </div>
-
-          <!-- Scheme (Col 4) -->
-          <div class="form-group col-4">
-            <label for="q-scheme" class="form-label">
-              Scheme
-            </label>
-            <input type="text" id="q-scheme" name="instructor_scheme" class="form-control" value="CTS" readonly>
-          </div>
-
-        </div>
       </section>
 
       <!-- Section 2: NIMI Training & Programs -->
