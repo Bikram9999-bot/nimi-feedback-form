@@ -32,13 +32,13 @@
         
         <div class="form-grid">
           
-          <!-- Q1. Name of the Instructor (Col 6) -->
+          <!-- Q1. Name of Participant (Col 6) -->
           <div class="form-group col-6">
             <label for="q1-name" class="form-label">
-              Q1. Name of the Instructor <span class="required-star">*</span>
+              Q1. Name of Participant <span class="required-star">*</span>
             </label>
-            <input type="text" id="q1-name" name="entry.664861220" class="form-control" placeholder="Enter name of the instructor" required>
-            <span class="error-msg">Please enter name of the instructor.</span>
+            <input type="text" id="q1-name" name="entry.1195055244" class="form-control" placeholder="Enter name of the participant" required>
+            <span class="error-msg">Please enter name of the participant.</span>
           </div>
 
           <!-- Q2. Mobile Number (Col 6) -->
@@ -46,7 +46,7 @@
             <label for="q2-mobile" class="form-label">
               Q2. Mobile Number <span class="required-star">*</span>
             </label>
-            <input type="tel" id="q2-mobile" name="entry.2143350599" class="form-control" placeholder="10-digit mobile number" required pattern="[0-9]{10}">
+            <input type="tel" id="q2-mobile" name="entry.403944261" class="form-control" placeholder="10-digit mobile number" required pattern="[0-9]{10}">
             <span class="error-msg">Please enter a valid 10-digit mobile number.</span>
           </div>
 
@@ -55,7 +55,7 @@
             <label for="q3-state-district" class="form-label">
               Q3. State-District <span class="required-star">*</span>
             </label>
-            <input type="text" id="q3-state-district" name="entry.968278358" class="form-control" placeholder="Ex. Uttar Pradesh-Lucknow" required>
+            <input type="text" id="q3-state-district" name="entry.1801589120" class="form-control" placeholder="Ex. Uttar Pradesh-Lucknow" required>
             <span class="error-msg">Please enter State-District.</span>
           </div>
 
@@ -64,38 +64,17 @@
             <label for="q4-institute" class="form-label">
               Q4. Name of the Institute <span class="required-star">*</span>
             </label>
-            <input type="text" id="q4-institute" name="entry.898493162" class="form-control" placeholder="Enter name of the institute" required>
+            <input type="text" id="q4-institute" name="entry.8715253" class="form-control" placeholder="Enter name of the institute" required>
             <span class="error-msg">Please enter name of the institute.</span>
           </div>
 
           <!-- Q5. Designation / Role (Col 12) -->
           <div class="form-group col-12">
-            <label class="form-label">
+            <label for="q5-designation" class="form-label">
               Q5. Designation / Role <span class="required-star">*</span>
             </label>
-            <div class="options-list horizontal">
-              <label class="option-item">
-                <input type="radio" name="entry.1264561356" value="INSTRUCTOR" class="option-input" required>
-                <span class="option-label">Instructor</span>
-              </label>
-              <label class="option-item">
-                <input type="radio" name="entry.1264561356" value="FOREMAN" class="option-input">
-                <span class="option-label">Foreman</span>
-              </label>
-              <label class="option-item">
-                <input type="radio" name="entry.1264561356" value="TRAINEE" class="option-input">
-                <span class="option-label">Trainee</span>
-              </label>
-              <label class="option-item">
-                <input type="radio" name="entry.1264561356" value="__other_option__" id="q5-radio-other" class="option-input">
-                <span class="option-label">Other Roles:</span>
-              </label>
-            </div>
-            <!-- Conditional other response field -->
-            <div class="other-input-wrapper" id="q5-other-wrapper">
-              <input type="text" name="entry.1264561356.other_option_response" id="q5-other-text" class="form-control" placeholder="Please specify your role">
-            </div>
-            <span class="error-msg">Please select your designation/role.</span>
+            <input type="text" id="q5-designation" name="entry.1400077911" class="form-control" placeholder="E.g. Instructor, Foreman, Trainee, Principal..." required>
+            <span class="error-msg">Please enter your designation/role.</span>
           </div>
 
           <!-- Q6. Trade / Course (Col 12) -->
@@ -103,7 +82,7 @@
             <label for="q6-trade" class="form-label">
               Q6. Which trade/course are you pursuing or associated with? <span class="required-star">*</span>
             </label>
-            <input type="text" id="q6-trade" name="entry.1746385385" class="form-control" placeholder="Enter trade or course name (e.g. Electrician, Fitter)" required>
+            <input type="text" id="q6-trade" name="entry.1853477091" class="form-control" placeholder="Enter trade or course name (e.g. Electrician, Fitter)" required>
             <span class="error-msg">Please enter your trade or course.</span>
           </div>
 
@@ -120,98 +99,98 @@
           <!-- Q7. Familiarity with NIMI -->
           <div class="form-group col-12">
             <label class="form-label">
-              Q7. How familiar were you with NIMI's training programs before this session? (single choice) <span class="required-star">*</span>
+              Q7. How familiar were you with NIMI's programs before this session? (single choice) <span class="required-star">*</span>
             </label>
             <div class="options-list">
               <label class="option-item">
-                <input type="radio" name="entry.116515421" value="Not aware at all" class="option-input" required>
+                <input type="radio" name="entry.1434337983" value="Not familiar" class="option-input" required>
                 <span class="option-label">Not familiar</span>
               </label>
               <label class="option-item">
-                <input type="radio" name="entry.116515421" value="Slightly aware" class="option-input">
+                <input type="radio" name="entry.1434337983" value="Somewhat familiar" class="option-input">
                 <span class="option-label">Somewhat familiar</span>
               </label>
               <label class="option-item">
-                <input type="radio" name="entry.116515421" value="Moderately aware" class="option-input">
+                <input type="radio" name="entry.1434337983" value="Familiar" class="option-input">
                 <span class="option-label">Familiar</span>
               </label>
               <label class="option-item">
-                <input type="radio" name="entry.116515421" value="Extremely aware" class="option-input">
-                <span class="option-label">Very familiar</span>
+                <input type="radio" name="entry.1434337983" value="Very Familiar" class="option-input">
+                <span class="option-label">Very Familiar</span>
               </label>
             </div>
-            <span class="error-msg">Please select your familiarity with NIMI's training programs.</span>
+            <span class="error-msg">Please select your familiarity with NIMI's programs.</span>
           </div>
 
           <!-- Q8. NIMI Aspects of Interest (Checkboxes) -->
           <div class="form-group col-12">
             <label class="form-label">
-              Q8. Which NIMI offerings interest you most? (select all that apply)
+              Q8. Which aspects of NIMI's offerings are you most interested in? (select all that apply)
             </label>
             <div class="options-list">
               <label class="option-item">
-                <input type="checkbox" name="entry.588684866" value="IMPS / Educational Materials development and modernization" class="option-input">
-                <span class="option-label">Learning materials & curriculum development</span>
+                <input type="checkbox" name="entry.582717725" value="Learning materials &amp; curriculum" class="option-input">
+                <span class="option-label">Learning materials &amp; curriculum</span>
               </label>
               <label class="option-item">
-                <input type="checkbox" name="entry.588684866" value="Assessment and examination services (Question Bank)" class="option-input">
-                <span class="option-label">Assessments & question banks</span>
+                <input type="checkbox" name="entry.582717725" value="Assessment and examination services (Question Bank)" class="option-input">
+                <span class="option-label">Assessment and examination services (Question Bank)</span>
               </label>
               <label class="option-item">
-                <input type="checkbox" name="entry.588684866" value="Digital learning platforms (Online)" class="option-input">
-                <span class="option-label">Digital learning platforms</span>
+                <input type="checkbox" name="entry.582717725" value="Digital learning platforms (Online)" class="option-input">
+                <span class="option-label">Digital learning platforms (Online)</span>
               </label>
               <label class="option-item">
-                <input type="checkbox" name="entry.588684866" value="AR/VR Modules & Blended Learning" class="option-input">
-                <span class="option-label">AR/VR & blended learning modules</span>
+                <input type="checkbox" name="entry.582717725" value="AR/VR Modules &amp; Blended Learning" class="option-input">
+                <span class="option-label">AR/VR Modules &amp; Blended Learning</span>
               </label>
               <label class="option-item">
-                <input type="checkbox" name="entry.588684866" value="Applications (Ex. NIMI Mock Test App)" class="option-input">
-                <span class="option-label">Mobile apps (e.g., Mock Test App)</span>
+                <input type="checkbox" name="entry.582717725" value="Applications (Ex. NIMI Mock Test App)" class="option-input">
+                <span class="option-label">Applications (Ex. NIMI Mock Test App)</span>
               </label>
               <label class="option-item">
-                <input type="checkbox" name="entry.588684866" value="NIMI IT Services" class="option-input">
-                <span class="option-label">IT services</span>
+                <input type="checkbox" name="entry.582717725" value="NIMI IT Services" class="option-input">
+                <span class="option-label">NIMI IT Services</span>
               </label>
               <label class="option-item">
-                <input type="checkbox" name="entry.588684866" value="Translation Into HIndi And other Regional languages" class="option-input">
-                <span class="option-label">Regional language translation</span>
+                <input type="checkbox" name="entry.582717725" value="Translation Into HIndi And other Regional languages" class="option-input">
+                <span class="option-label">Translation Into Hindi and other Regional languages</span>
               </label>
               <label class="option-item">
-                <input type="checkbox" name="entry.588684866" value="__other_option__" id="q8-checkbox-other" class="option-input">
+                <input type="checkbox" name="entry.582717725" value="__other_option__" id="q8-checkbox-other" class="option-input">
                 <span class="option-label">Other:</span>
               </label>
             </div>
             <!-- Conditional other response field -->
             <div class="other-input-wrapper" id="q8-other-wrapper">
-              <input type="text" name="entry.588684866.other_option_response" id="q8-other-text" class="form-control" placeholder="Please specify other offerings">
+              <input type="text" name="entry.582717725.other_option_response" id="q8-other-text" class="form-control" placeholder="Please specify other offerings">
             </div>
           </div>
 
           <!-- Q9. Value Addition of Presentation -->
           <div class="form-group col-12">
             <label class="form-label">
-              Q9. Did this session help you understand the value NIMI can add to your ITI/organization? (single choice) <span class="required-star">*</span>
+              Q9. Did the presentation help you understand how NIMI can add value to your ITI/organization? (single choice) <span class="required-star">*</span>
             </label>
             <div class="options-list">
               <label class="option-item">
-                <input type="radio" name="entry.1160909724" value="Strongly disagree" class="option-input" required>
+                <input type="radio" name="entry.1185486809" value="Strongly disagree" class="option-input" required>
                 <span class="option-label">Strongly disagree</span>
               </label>
               <label class="option-item">
-                <input type="radio" name="entry.1160909724" value="Disagree" class="option-input">
+                <input type="radio" name="entry.1185486809" value="Disagree" class="option-input">
                 <span class="option-label">Disagree</span>
               </label>
               <label class="option-item">
-                <input type="radio" name="entry.1160909724" value="Neutral" class="option-input">
+                <input type="radio" name="entry.1185486809" value="Neutral" class="option-input">
                 <span class="option-label">Neutral</span>
               </label>
               <label class="option-item">
-                <input type="radio" name="entry.1160909724" value="Agree" class="option-input">
+                <input type="radio" name="entry.1185486809" value="Agree" class="option-input">
                 <span class="option-label">Agree</span>
               </label>
               <label class="option-item">
-                <input type="radio" name="entry.1160909724" value="Strongly agree" class="option-input">
+                <input type="radio" name="entry.1185486809" value="Strongly agree" class="option-input">
                 <span class="option-label">Strongly agree</span>
               </label>
             </div>
@@ -229,81 +208,95 @@
           <!-- Q10. Quality rating -->
           <div class="form-group col-12">
             <label class="form-label">
-              Q10. How do NIMI's books compare to other available textbooks? (single choice) <span class="required-star">*</span>
+              Q10. How would you rate the quality of NIMI's published books compared to other available textbooks? (single choice) <span class="required-star">*</span>
             </label>
             <div class="options-list">
               <label class="option-item">
-                <input type="radio" name="entry.197976167" value="below average" class="option-input" required>
+                <input type="radio" name="entry.366311424" value="below average" class="option-input" required>
                 <span class="option-label">Below average</span>
               </label>
               <label class="option-item">
-                <input type="radio" name="entry.197976167" value="Average" class="option-input">
+                <input type="radio" name="entry.366311424" value="Average" class="option-input">
                 <span class="option-label">Average</span>
               </label>
               <label class="option-item">
-                <input type="radio" name="entry.197976167" value="Above average" class="option-input">
+                <input type="radio" name="entry.366311424" value="Above average" class="option-input">
                 <span class="option-label">Above average</span>
               </label>
               <label class="option-item">
-                <input type="radio" name="entry.197976167" value="Haven't seen NIMI books yet" class="option-input">
-                <span class="option-label">Haven't reviewed NIMI books yet</span>
+                <input type="radio" name="entry.366311424" value="Haven't seen NIMI books yet" class="option-input">
+                <span class="option-label">Haven't seen NIMI books yet</span>
               </label>
             </div>
             <span class="error-msg">Please rate how NIMI books compare.</span>
           </div>
 
-          <!-- Q11. Primary concern (Radios) -->
+          <!-- Q11. Likelihood to Adopt (Radios) -->
           <div class="form-group col-12">
             <label class="form-label">
-              Q11. What's your main concern about NIMI books and materials? (single choice — pick top concern) <span class="required-star">*</span>
+              Q11. How likely are you to adopt NIMI materials/services in the next 6 months? (single choice) <span class="required-star">*</span>
             </label>
             <div class="options-list">
               <label class="option-item">
-                <input type="radio" name="entry.1081723276" value="Cost/affordability" class="option-input" required>
-                <span class="option-label">Cost</span>
+                <input type="radio" name="entry.619211593" value="Definitely not" class="option-input" required>
+                <span class="option-label">Definitely not</span>
               </label>
               <label class="option-item">
-                <input type="radio" name="entry.1081723276" value="Limited availability in my region" class="option-input">
-                <span class="option-label">Limited regional availability</span>
+                <input type="radio" name="entry.619211593" value="Probably not" class="option-input">
+                <span class="option-label">Probably not</span>
               </label>
               <label class="option-item">
-                <input type="radio" name="entry.1081723276" value="Language barriers" class="option-input">
-                <span class="option-label">Language barriers</span>
+                <input type="radio" name="entry.619211593" value="Not sure" class="option-input">
+                <span class="option-label">Not sure</span>
               </label>
               <label class="option-item">
-                <input type="radio" name="entry.1081723276" value="Quality of content" class="option-input">
-                <span class="option-label">Content quality</span>
+                <input type="radio" name="entry.619211593" value="Probably yes" class="option-input">
+                <span class="option-label">Probably yes</span>
               </label>
               <label class="option-item">
-                <input type="radio" name="entry.1081723276" value="Outdated information" class="option-input">
-                <span class="option-label">Outdated information</span>
-              </label>
-              <label class="option-item">
-                <input type="radio" name="entry.1081723276" value="Lack of digital versions" class="option-input">
-                <span class="option-label">No digital version available</span>
-              </label>
-              <label class="option-item">
-                <input type="radio" name="entry.1081723276" value="No concerns - they meet our needs" class="option-input">
-                <span class="option-label">No concerns</span>
-              </label>
-              <label class="option-item">
-                <input type="radio" name="entry.1081723276" value="__other_option__" id="q11-radio-other" class="option-input">
-                <span class="option-label">Other:</span>
+                <input type="radio" name="entry.619211593" value="Definitely yes" class="option-input">
+                <span class="option-label">Definitely yes</span>
               </label>
             </div>
-            <!-- Conditional other response field -->
-            <div class="other-input-wrapper" id="q11-other-wrapper">
-              <input type="text" name="entry.1081723276.other_option_response" id="q11-other-text" class="form-control" placeholder="Please specify other concern">
-            </div>
-            <span class="error-msg">Please select your primary concern.</span>
+            <span class="error-msg">Please select your likelihood of adoption.</span>
           </div>
 
-          <!-- Q12. Suggestions -->
+          <!-- Q12. Overall Satisfaction (1-5 Rating) -->
           <div class="form-group col-12">
-            <label for="q12-comments" class="form-label">
-              Q12. Additional comments or suggestions (optional, paragraph)
+            <label class="form-label">
+              Q12. Overall satisfaction with today's session <span class="required-star">*</span>
             </label>
-            <textarea id="q12-comments" name="comments_text" class="form-control" placeholder="Type your comments or suggestions here..."></textarea>
+            <div class="options-list horizontal">
+              <label class="option-item">
+                <input type="radio" name="entry.484827684" value="1" class="option-input" required>
+                <span class="option-label">1 ⭐ (Very Poor)</span>
+              </label>
+              <label class="option-item">
+                <input type="radio" name="entry.484827684" value="2" class="option-input">
+                <span class="option-label">2 ⭐⭐</span>
+              </label>
+              <label class="option-item">
+                <input type="radio" name="entry.484827684" value="3" class="option-input">
+                <span class="option-label">3 ⭐⭐⭐ (Average)</span>
+              </label>
+              <label class="option-item">
+                <input type="radio" name="entry.484827684" value="4" class="option-input">
+                <span class="option-label">4 ⭐⭐⭐⭐</span>
+              </label>
+              <label class="option-item">
+                <input type="radio" name="entry.484827684" value="5" class="option-input">
+                <span class="option-label">5 ⭐⭐⭐⭐⭐ (Excellent)</span>
+              </label>
+            </div>
+            <span class="error-msg">Please rate your overall satisfaction.</span>
+          </div>
+
+          <!-- Q13. Additional Comments -->
+          <div class="form-group col-12">
+            <label for="q13-comments" class="form-label">
+              Q13. Any additional comments, suggestions, or feedback regarding NIMI books and services? (optional)
+            </label>
+            <textarea id="q13-comments" name="entry.1849007445" class="form-control" placeholder="Type your comments or suggestions here..."></textarea>
           </div>
 
         </div>

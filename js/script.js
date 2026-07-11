@@ -19,16 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    if (triggerElement.type === 'radio') {
-      // For radio buttons, we listen to change events on the group
-      const name = triggerElement.name;
-      const radios = document.querySelectorAll(`input[name="${name}"]`);
-      radios.forEach(radio => {
-        radio.addEventListener('change', () => {
-          toggleState(triggerElement.checked);
-        });
-      });
-    } else if (triggerElement.type === 'checkbox') {
+    if (triggerElement.type === 'checkbox') {
       // For checkboxes, we listen to change on the checkbox itself
       triggerElement.addEventListener('change', () => {
         toggleState(triggerElement.checked);
@@ -38,25 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Setup conditional groups
 
-  // Q5 Designation
-  setupConditionalOther(
-    document.getElementById('q5-radio-other'),
-    document.getElementById('q5-other-wrapper'),
-    document.getElementById('q5-other-text')
-  );
-
-  // Q8 Offerings
+  // Q8 Offerings "Other"
   setupConditionalOther(
     document.getElementById('q8-checkbox-other'),
     document.getElementById('q8-other-wrapper'),
     document.getElementById('q8-other-text')
-  );
-
-  // Q11 Concern
-  setupConditionalOther(
-    document.getElementById('q11-radio-other'),
-    document.getElementById('q11-other-wrapper'),
-    document.getElementById('q11-other-text')
   );
 
   // Input styling feedback on focus out/typing
@@ -129,13 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
         isValid = false;
         group.classList.add('has-error');
         if (!firstErrorField) firstErrorField = group;
-      } else if (checkedRadio.value === '__other_option__') {
-        const otherText = form.querySelector(`input[name="${name}.other_option_response"]`);
-        if (otherText && otherText.value.trim() === '') {
-          isValid = false;
-          group.classList.add('has-error');
-          if (!firstErrorField) firstErrorField = otherText;
-        }
       }
     });
 
@@ -154,8 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
-
-
 
     // Scroll to the first invalid field
     if (firstErrorField) {
@@ -182,40 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
     btnSpinner.style.display = 'inline-block';
     btnText.textContent = 'Submitting...';
 
-    // Value mappings from polished UI values to Google Form option strings
-    const valueMappings = {
-      'entry.116515421': {
-        'Not familiar': 'Not aware at all',
-        'Somewhat familiar': 'Slightly aware',
-        'Familiar': 'Moderately aware',
-        'Very familiar': 'Extremely aware'
-      },
-      'entry.588684866': {
-        'Learning materials & curriculum development': 'IMPS / Educational Materials development and modernization',
-        'Assessments & question banks': 'Assessment and examination services (Question Bank)',
-        'Digital learning platforms': 'Digital learning platforms (Online)',
-        'AR/VR & blended learning modules': 'AR/VR Modules & Blended Learning',
-        'Mobile apps (e.g., Mock Test App)': 'Applications (Ex. NIMI Mock Test App)',
-        'IT services': 'NIMI IT Services',
-        'Regional language translation': 'Translation Into HIndi And other Regional languages'
-      },
-      'entry.197976167': {
-        'Below average': 'below average',
-        'Average': 'Average',
-        'Above average': 'Above average',
-        'Haven\'t reviewed NIMI books yet': 'Haven\'t seen NIMI books yet'
-      },
-      'entry.1081723276': {
-        'Cost': 'Cost/affordability',
-        'Limited regional availability': 'Limited availability in my region',
-        'Language barriers': 'Language barriers',
-        'Content quality': 'Quality of content',
-        'Outdated information': 'Outdated information',
-        'No digital version available': 'Lack of digital versions',
-        'No concerns': 'No concerns - they meet our needs'
-      }
-    };
-
     // Construct form URLSearchParams payload matching Google Form inputs
     const formData = new URLSearchParams();
 
@@ -230,15 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     radioNames.forEach(name => {
       const checkedRadio = form.querySelector(`input[name="${name}"]:checked`);
       if (checkedRadio) {
-        const rawValue = checkedRadio.value;
-        const mappedValue = (valueMappings[name] && valueMappings[name][rawValue]) ? valueMappings[name][rawValue] : rawValue;
-        formData.append(name, mappedValue);
-        if (checkedRadio.value === '__other_option__') {
-          const otherText = form.querySelector(`input[name="${name}.other_option_response"]`);
-          if (otherText) {
-            formData.append(`${name}.other_option_response`, otherText.value.trim());
-          }
-        }
+        formData.append(name, checkedRadio.value);
       }
     });
 
@@ -247,9 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     checkboxNames.forEach(name => {
       const checkedCheckboxes = form.querySelectorAll(`input[name="${name}"]:checked`);
       checkedCheckboxes.forEach(cb => {
-        const rawValue = cb.value;
-        const mappedValue = (valueMappings[name] && valueMappings[name][rawValue]) ? valueMappings[name][rawValue] : rawValue;
-        formData.append(name, mappedValue);
+        formData.append(name, cb.value);
         if (cb.value === '__other_option__') {
           const otherText = form.querySelector(`input[name="${name}.other_option_response"]`);
           if (otherText) {
@@ -259,11 +183,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // 4. Append Comments field (entry.1234865037)
-    const rawComments = document.getElementById('q12-comments').value.trim();
-    formData.append('entry.1234865037', rawComments);
+    // 4. Add Comments field (Q13 - entry.1849007445)
+    const rawComments = document.getElementById('q13-comments').value.trim();
+    // Note: textarea name is already entry.1849007445, but we append explicitly to ensure
+    formData.append('entry.1849007445', rawComments);
 
-    const googleFormActionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfSoTbnzE_gTBsDQNqJ9Px8Qrpt9hWG0hgvvQAD-ru3_S2gJg/formResponse';
+    const googleFormActionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSckgVvy9ErYvfrNQN62pxxO0r8fETysIanhpY5Mi7dyciV2bw/formResponse';
 
     // Send payload to Google Forms using fetch with mode 'no-cors'
     fetch(googleFormActionUrl, {
@@ -286,25 +211,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const mobile = document.getElementById('q2-mobile').value.trim();
         const stateDistrict = document.getElementById('q3-state-district').value.trim();
         const institute = document.getElementById('q4-institute').value.trim();
-        
-        const checkedDesignation = form.querySelector('input[name="entry.1264561356"]:checked');
-        let designation = '';
-        if (checkedDesignation) {
-          if (checkedDesignation.value === '__other_option__') {
-            const otherVal = document.getElementById('q5-other-text').value.trim();
-            designation = otherVal ? `Other: ${otherVal}` : 'Other';
-          } else {
-            designation = checkedDesignation.value;
-          }
-        }
-
+        const designation = document.getElementById('q5-designation').value.trim();
         const trade = document.getElementById('q6-trade').value.trim();
 
-        const checkedFamiliarity = form.querySelector('input[name="entry.116515421"]:checked');
+        const checkedFamiliarity = form.querySelector('input[name="entry.1434337983"]:checked');
         const familiarity = checkedFamiliarity ? checkedFamiliarity.value : '';
         
         const checkedOfferings = [];
-        form.querySelectorAll('input[name="entry.588684866"]:checked').forEach(cb => {
+        form.querySelectorAll('input[name="entry.582717725"]:checked').forEach(cb => {
           if (cb.value === '__other_option__') {
             const otherVal = document.getElementById('q8-other-text').value.trim();
             if (otherVal) checkedOfferings.push(`Other: ${otherVal}`);
@@ -313,22 +227,17 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
         
-        const checkedValue = form.querySelector('input[name="entry.1160909724"]:checked');
+        const checkedValue = form.querySelector('input[name="entry.1185486809"]:checked');
         const valueAddition = checkedValue ? checkedValue.value : '';
         
-        const checkedBookQuality = form.querySelector('input[name="entry.197976167"]:checked');
+        const checkedBookQuality = form.querySelector('input[name="entry.366311424"]:checked');
         const bookQuality = checkedBookQuality ? checkedBookQuality.value : '';
 
-        const checkedConcern = form.querySelector('input[name="entry.1081723276"]:checked');
-        let primaryConcern = '';
-        if (checkedConcern) {
-          if (checkedConcern.value === '__other_option__') {
-            const otherVal = document.getElementById('q11-other-text').value.trim();
-            primaryConcern = otherVal ? `Other: ${otherVal}` : 'Other';
-          } else {
-            primaryConcern = checkedConcern.value;
-          }
-        }
+        const checkedLikelihood = form.querySelector('input[name="entry.619211593"]:checked');
+        const likelihood = checkedLikelihood ? checkedLikelihood.value : '';
+
+        const checkedSatisfaction = form.querySelector('input[name="entry.484827684"]:checked');
+        const satisfaction = checkedSatisfaction ? checkedSatisfaction.value : '';
         
         const submission = {
           name,
@@ -341,7 +250,8 @@ document.addEventListener('DOMContentLoaded', () => {
           offerings: checkedOfferings,
           valueAddition,
           bookQuality,
-          primaryConcern,
+          likelihood,
+          satisfaction,
           comments: rawComments,
           timestamp: new Date().toISOString()
         };
