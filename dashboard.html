@@ -4,8 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NIMI Feedback Submissions Dashboard</title>
-  <!-- SEO & Fonts -->
   <meta name="description" content="View and manage the collected feedback for NIMI training sessions.">
+  <!-- Resource preconnects to eliminate network connection overhead -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Performance-optimized typography loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lexend:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
     /* Dashboard specific overrides and extensions */
@@ -647,8 +652,12 @@
                     offerings = rowData[8].split(',').map(s => s.trim());
                   }
 
+                  const rawTime = rowData[0] || '';
+                  const parsedTime = rawTime ? new Date(rawTime).getTime() : 0;
+
                   submissionsList.push({
-                    timestamp: rowData[0] || '',
+                    timestamp: rawTime,
+                    parsedTime: parsedTime,
                     name: rowData[1] || '',
                     mobile: rowData[2] || '',
                     stateDistrict: rowData[3] || '',
@@ -666,8 +675,8 @@
                 }
                 
                 submissions = submissionsList;
-                // Sort submissions by timestamp (newest first)
-                submissions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                // Optimized sort using pre-calculated numeric timestamp values
+                submissions.sort((a, b) => b.parsedTime - a.parsedTime);
                 syncStatus.innerHTML = `<span style="color: var(--success-color); font-weight: 600;">✓ Synced with Google Sheets</span> (${submissions.length} responses)`;
               } catch (e) {
                 console.error('Error parsing CSV:', e);
@@ -693,7 +702,10 @@
       function loadFallbackLocalData() {
         try {
           submissions = JSON.parse(localStorage.getItem('nimi_submissions') || '[]');
-          submissions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+          submissions.forEach(s => {
+            s.parsedTime = s.timestamp ? new Date(s.timestamp).getTime() : 0;
+          });
+          submissions.sort((a, b) => b.parsedTime - a.parsedTime);
         } catch (e) {
           console.error('Error reading localStorage:', e);
           submissions = [];
@@ -756,7 +768,7 @@
         filterAndRenderTable();
       }
 
-      // Filter and render table rows
+      // Optimized filter and render table rows using DocumentFragment to avoid layout thrashing
       function filterAndRenderTable() {
         const searchText = searchInput.value.toLowerCase().trim();
         const designationVal = designationFilter.value;
@@ -764,7 +776,7 @@
         tableBody.innerHTML = '';
 
         const filtered = submissions.filter(s => {
-          // Text matches
+          // Pre-cache properties and matches
           const nameMatches = s.name ? s.name.toLowerCase().includes(searchText) : false;
           const instituteMatches = s.institute ? s.institute.toLowerCase().includes(searchText) : false;
           const stateMatches = s.stateDistrict ? s.stateDistrict.toLowerCase().includes(searchText) : false;
@@ -777,7 +789,6 @@
           let designationMatch = true;
           if (designationVal) {
             if (designationVal === 'Other') {
-              // Matches if designation is not INSTRUCTOR, FOREMAN, or TRAINEE
               const upperDes = s.designation ? s.designation.toUpperCase() : '';
               designationMatch = upperDes && !['INSTRUCTOR', 'FOREMAN', 'TRAINEE'].includes(upperDes);
             } else {
@@ -793,10 +804,12 @@
           return;
         }
 
+        // Use a DocumentFragment to perform batch DOM insertions (avoids multiple paint repaints)
+        const fragment = document.createDocumentFragment();
+
         filtered.forEach(s => {
           const row = document.createElement('tr');
           
-          // Classify book quality rating badge
           let bookQualityBadgeClass = 'mid';
           if (s.bookQuality === 'Above average') {
             bookQualityBadgeClass = 'high';
@@ -804,7 +817,6 @@
             bookQualityBadgeClass = 'low';
           }
 
-          // Safe strings
           const safeName = escapeHtml(s.name);
           const safeMobile = escapeHtml(s.mobile);
           const safeState = escapeHtml(s.stateDistrict);
@@ -831,8 +843,10 @@
             <td><span class="rating-badge ${parseInt(s.satisfaction) >= 4 ? 'high' : parseInt(s.satisfaction) >= 3 ? 'mid' : 'low'}" style="width: auto; height: auto; padding: 4px 10px; border-radius: var(--radius-sm); font-size: 12px;">${safeSatisfaction === '-' ? '-' : safeSatisfaction + ' ⭐'}</span></td>
             <td class="comments-cell" title="${safeComments}">${safeComments || '<span style="color:var(--text-muted); font-style:italic;">None</span>'}</td>
           `;
-          tableBody.appendChild(row);
+          fragment.appendChild(row);
         });
+
+        tableBody.appendChild(fragment);
       }
 
       function escapeHtml(str) {
