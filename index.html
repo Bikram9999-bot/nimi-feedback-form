@@ -266,27 +266,33 @@
             <label class="form-label">
               Q12. Overall satisfaction with today's session <span class="required-star">*</span>
             </label>
-            <div class="options-list horizontal">
-              <label class="option-item">
-                <input type="radio" name="entry.484827684" value="1" class="option-input" required>
-                <span class="option-label">1 ⭐ (Very Poor)</span>
-              </label>
-              <label class="option-item">
-                <input type="radio" name="entry.484827684" value="2" class="option-input">
-                <span class="option-label">2 ⭐⭐</span>
-              </label>
-              <label class="option-item">
-                <input type="radio" name="entry.484827684" value="3" class="option-input">
-                <span class="option-label">3 ⭐⭐⭐ (Average)</span>
-              </label>
-              <label class="option-item">
-                <input type="radio" name="entry.484827684" value="4" class="option-input">
-                <span class="option-label">4 ⭐⭐⭐⭐</span>
-              </label>
-              <label class="option-item">
-                <input type="radio" name="entry.484827684" value="5" class="option-input">
-                <span class="option-label">5 ⭐⭐⭐⭐⭐ (Excellent)</span>
-              </label>
+            <div class="rating-scale-container">
+              <div class="rating-scale">
+                <label class="rating-option">
+                  <input type="radio" name="entry.484827684" value="1" required>
+                  <span class="rating-number">1</span>
+                </label>
+                <label class="rating-option">
+                  <input type="radio" name="entry.484827684" value="2">
+                  <span class="rating-number">2</span>
+                </label>
+                <label class="rating-option">
+                  <input type="radio" name="entry.484827684" value="3">
+                  <span class="rating-number">3</span>
+                </label>
+                <label class="rating-option">
+                  <input type="radio" name="entry.484827684" value="4">
+                  <span class="rating-number">4</span>
+                </label>
+                <label class="rating-option">
+                  <input type="radio" name="entry.484827684" value="5">
+                  <span class="rating-number">5</span>
+                </label>
+              </div>
+              <div class="rating-labels">
+                <span>1 (Very Poor)</span>
+                <span>5 (Excellent)</span>
+              </div>
             </div>
             <span class="error-msg">Please rate your overall satisfaction.</span>
           </div>
