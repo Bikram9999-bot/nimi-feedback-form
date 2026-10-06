@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Disable submission button & show spinner
     submitBtn.disabled = true;
     btnSpinner.style.display = 'inline-block';
-    btnText.textContent = 'Submitting...';
+    btnText.textContent = 'Submitting... / जमा किया जा रहा है...';
 
     // Construct form URLSearchParams payload matching Google Form inputs
     const formData = new URLSearchParams();
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Request sent successfully (opaque response)
       submitBtn.disabled = false;
       btnSpinner.style.display = 'none';
-      btnText.textContent = 'Submit Feedback';
+      btnText.textContent = 'Submit Feedback / प्रतिपुष्टि जमा करें';
       
       // Save submission locally
       try {
@@ -278,10 +278,10 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch((error) => {
       console.error('Error submitting form:', error);
-      alert('An error occurred during submission. Please try again.');
+      alert('An error occurred during submission. Please try again. / सबमिशन के दौरान त्रुटि हुई। कृपया पुन: प्रयास करें।');
       submitBtn.disabled = false;
       btnSpinner.style.display = 'none';
-      btnText.textContent = 'Submit Feedback';
+      btnText.textContent = 'Submit Feedback / प्रतिपुष्टि जमा करें';
     });
   });
 
